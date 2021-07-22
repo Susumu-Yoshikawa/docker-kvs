@@ -1,0 +1,9 @@
+FROM python:3.7.11-slim
+RUN pip install Flask==1.1.1 redis==3.3.8
+WORKDIR /src
+COPY ./src/server.py /src/
+ENV PORT 80
+ENV REDIS_HOST 127.0.0.1
+ENV REDIS_PORT 6379
+ENV REDIS_DB 0
+CMD ["python", "-u", 'server.py']
